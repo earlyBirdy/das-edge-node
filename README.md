@@ -1,4 +1,4 @@
-# Sintrones DAS Edge Node (v0.1)
+# DAS Edge Node (v0.1)
 
 Distributed Acoustic Sensing (DAS) + Edge AI node for subsea cable security,
 designed to run on rugged Sintrones edge computing platforms.

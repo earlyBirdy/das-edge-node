@@ -1,4 +1,4 @@
-# Sintrones DAS Edge Node — Engineering Specification (v0.1)
+# DAS Edge Node — Engineering Specification (v0.1)
 
 ## 1. Purpose
 

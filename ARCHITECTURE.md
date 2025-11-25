@@ -1,4 +1,4 @@
-# Sintrones DAS Edge Node — Architecture (v0.1)
+# DAS Edge Node — Architecture (v0.1)
 
 This document captures the initial functional diagram and dataflow for the
 Sintrones DAS Edge Node concept.
