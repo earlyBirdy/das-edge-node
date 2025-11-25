@@ -1,0 +1,2 @@
+See ARCHITECTURE.md section "2. End-to-End Dataflow" for the full ASCII
+representation. This file is a placeholder for future rendered PNG/SVG diagrams.

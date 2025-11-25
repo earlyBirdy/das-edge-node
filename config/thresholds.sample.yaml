@@ -1,0 +1,16 @@
+defaults:
+  min_confidence: 0.7
+  min_persistence_seconds: 3
+  severity_levels:
+    1:
+      description: "Suspicious vibration pattern"
+    2:
+      description: "Likely interference (anchor/ROV)"
+    3:
+      description: "Probable sabotage / cutting attempt"
+
+class_overrides:
+  cutting_attempt_suspected:
+    min_confidence: 0.6
+    min_persistence_seconds: 1
+    severity: 3

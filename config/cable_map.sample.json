@@ -1,0 +1,22 @@
+{
+  "landing_station_id": "TW-TAIPEI-01",
+  "cable_name": "ExampleCable-1",
+  "total_length_km": 80.0,
+  "segments": [
+    {
+      "km_start": 0.0,
+      "km_end": 10.0,
+      "zone": "near_shore"
+    },
+    {
+      "km_start": 10.0,
+      "km_end": 60.0,
+      "zone": "mid_ocean"
+    },
+    {
+      "km_start": 60.0,
+      "km_end": 80.0,
+      "zone": "chokepoint"
+    }
+  ]
+}

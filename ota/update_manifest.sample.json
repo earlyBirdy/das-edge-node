@@ -1,0 +1,8 @@
+{
+  "version": "0.1.0",
+  "models": [],
+  "config_files": [
+    "config/cable_map.sample.json",
+    "config/thresholds.sample.yaml"
+  ]
+}

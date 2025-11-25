@@ -1,0 +1,5 @@
+# v0.1 placeholder - will be expanded in v0.2
+# Example minimal deps for future API/UI work:
+fastapi
+uvicorn
+pydantic
