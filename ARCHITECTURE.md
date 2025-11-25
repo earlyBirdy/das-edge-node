@@ -7,50 +7,50 @@ Sintrones DAS Edge Node concept.
 
 ```txt
         ┌───────────────────────────────────────────────────────────┐
-        │                   SEAFLOOR / PHYSICAL LAYER              │
+        │                   SEAFLOOR / PHYSICAL LAYER               │
         │                                                           │
         │  Subsea Cable  ── Dark Fiber (sensor fiber) ──────────┐   │
         └───────────────────────────────────────────────────────┴───┘
                                                                 │
                      Landing Station / Cable Hut                │
-┌────────────────────────────────────────────────────────────────┴───────────────────────────────┐
+┌───────────────────────────────────────────────────────────────┴──────────────────────-─────────┐
 │                               DAS + EDGE AI SECURITY NODE (RACK)                               │
-│                                                                                                 │
-│  ┌──────────────────┐          ┌─────────────────────────────────────────────────────────────┐  │
+│                                                                                                │
+│  ┌──────────────────┐          ┌────────────────────────────────────────────────────────────┐  │
 │  │  DAS FRONT-END   │  Fiber   │            SINTRONES EDGE AI COMPUTING (BOX)               │  │
 │  │ (Optical module) ├─────────►│   (CPU + GPU + NVMe + Multi-LAN, rugged/24×7)              │  │
-│  └──────────────────┘          └─────────────────────────────────────────────────────────────┘  │
-│         ▲                           │                    │                    │               │
-│         │                           │                    │                    │               │
-│   Laser pulses &                    │                    │                    │               │
-│   backscatter ADC                   │                    │                    │               │
-│                                     │                    │                    │               │
-│                                     ▼                    ▼                    ▼               │
-│          ┌───────────────────────────────┐   ┌───────────────────────────┐  ┌────────────────┐│
-│          │  DAS SDK & LOW-LEVEL DSP     │   │  SIGNAL PROC & FEATURES   │  │  ML INFERENCE  ││
-│          │  (vendor library / driver)   │   │  (FFT, filters, feature   │  │  ENGINE        ││
-│          │  - range binning             │   │   vectors per distance)    │  │  - classifiers ││
-│          │  - phase/amplitude calc      │   │                           │  │  - anomaly det.││
-│          └───────────────┬──────────────┘   └───────────────┬───────────┘  └─────────┬──────┘│
-│                          │                                  │                          │       │
-│                          ▼                                  ▼                          ▼       │
-│          ┌───────────────────────────────┐   ┌───────────────────────────┐  ┌────────────────┐│
-│          │ EVENT & RULES ENGINE         │   │  DATA STORAGE & LOGGING   │  │  UI + API LAYER ││
-│          │ - severity levels            │   │  - raw/processed traces   │  │  - web dashboard││
-│          │ - alarm logic (L1/L2/L3)     │   │  - alerts history         │  │  - REST/gRPC    ││
-│          │ - correlation windows        │   │  - forensics export       │  │  - map view     ││
-│          └───────────────┬──────────────┘   └───────────────┬───────────┘  └─────────┬──────┘│
+│  └──────────────────┘          └────────────────────────────────────────────────────────────┘  │
+│         ▲                           │                    │                    │                │
+│         │                           │                    │                    │                │
+│   Laser pulses &                    │                    │                    │                │
+│   backscatter ADC                   │                    │                    │                │
+│                                     │                    │                    │                │
+│                                     ▼                    ▼                    ▼                │
+│          ┌──────────────────────────────┐   ┌───────────────────────────┐  ┌────────────────┐  │
+│          │  DAS SDK & LOW-LEVEL DSP     │   │  SIGNAL PROC & FEATURES   │  │  ML INFERENCE  │  │
+│          │  (vendor library / driver)   │   │  (FFT, filters, feature   │  │  ENGINE        │  │
+│          │  - range binning             │   │   vectors per distance)   │  │  - classifiers │  │
+│          │  - phase/amplitude calc      │   │                           │  │  - anomaly det.│  │
+│          └───────────────┬──────────────┘   └───────────────┬───────────┘  └─────────┬──────┘  │
+│                          │                                  │                        │         │
+│                          ▼                                  ▼                        ▼         │
+│          ┌───────────────────────────────┐   ┌───────────────────────────┐  ┌────────────────┐ │
+│          │ EVENT & RULES ENGINE         │   │  DATA STORAGE & LOGGING   │  │  UI + API LAYER │ │
+│          │ - severity levels            │   │  - raw/processed traces   │  │  - web dashboard│ │
+│          │ - alarm logic (L1/L2/L3)     │   │  - alerts history         │  │  - REST/gRPC    │ │
+│          │ - correlation windows        │   │  - forensics export       │  │  - map view     │ │
+│          └───────────────┬──────────────┘   └───────────────┬───────────┘  └─────────┬────-──┘ │
 │                          │                                  │                          │       │
 │                          │                                  │                          │       │
 │                          ▼                                  │                          ▼       │
-│       ┌───────────────────────────────┐                      │        ┌──────────────────────┐ │
-│       │ EXTERNAL FEEDS / CONTEXT     │                      │        │ MGMT / OTA / SECURITY│ │
-│       │ - AIS / radar / weather      │                      │        │ - model updates      │ │
-│       │ - maintenance schedules      │                      │        │ - config / policies  │ │
-│       │ - “known operations” windows │                      │        │ - health monitoring  │ │
-│       └───────────────────────────────┘                      │        └──────────────────────┘ │
-│                          │                                  │                                 │
-└──────────────────────────┴──────────────────────────────────┴─────────────────────────────────┘
+│       ┌───────────────────────────────┐                     │        ┌──────────────────────┐  │
+│       │ EXTERNAL FEEDS / CONTEXT      │                     │        │ MGMT / OTA / SECURITY│  │
+│       │ - AIS / radar / weather       │                     │        │ - model updates      │  │
+│       │ - maintenance schedules       │                     │        │ - config / policies  │  │
+│       │ - “known operations” windows  │                     │        │ - health monitoring  │  │
+│       └───────────────────────────────┘                     │        └──────────────────────┘  │
+│                          │                                  │                                  │
+└──────────────────────────┴──────────────────────────────────┴────────────────────────── ───────┘
 ```
 
 ## 2. End-to-End Dataflow
